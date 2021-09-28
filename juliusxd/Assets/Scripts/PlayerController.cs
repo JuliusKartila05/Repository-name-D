@@ -1,0 +1,51 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class PlayerController : MonoBehaviour
+{
+    CharacterController controller;  
+
+    public float moveSpeed = 8f;
+
+    public float runSpeed = 14f;
+
+    public float jumpheight = 3f;
+
+    public float gravity = -9.81f;
+
+
+    public Vector3 velocity;
+
+    public Transform groundcheck;
+    
+    public float groundDistance = 0.1f;
+
+    public LayerMask groundMask; 
+
+
+
+
+    [SerializeField] private bool isGrounded;
+
+
+    private Vector3 move; 
+    // Start is called before the first frame update
+
+        void Start()
+        {
+        controller = GetComponent<CharacterController>();
+        }
+    
+    // Update is called once per frame
+    void Update()
+    {
+        CheckIfGrounded(); 
+    }
+
+    private void CheckIfGrounded()
+    {
+
+    }
+}
+
