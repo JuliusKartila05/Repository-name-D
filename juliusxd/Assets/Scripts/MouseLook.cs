@@ -10,13 +10,13 @@ public class MouseLook : MonoBehaviour
 
     public float mouseSensitivity = 200f;
     
-    public float minXAngel = -80f;
+    public float minXAngle = -80f;
 
     public float maxXAngle = 90f;
 
     private float mouseX;
 
-    private float mousey;
+    private float mouseY;
 
     private float xRotation = 0f;
 
@@ -39,6 +39,11 @@ public class MouseLook : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        mouseX = Input.GetAxis("Mouse X") * mouseSensitivity * Time.deltaTime;
+        mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity * Time.deltaTime;
+        xRotation -= mouseY;
+        xRotation = Mathf.Clamp(xRotation,minXAngle,maxXAngle);
+        transform.localRotation = Quaternion.Euler(xRotation,0,0); 
+        playerBody.Rotate(Vector3.up * mouseX);
     }
 }
