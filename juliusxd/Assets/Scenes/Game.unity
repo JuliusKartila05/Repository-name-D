@@ -342,6 +342,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &807893658 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 5866666021909216657, guid: 36078ab0369161e49a29d349ae3e0739, type: 3}
+  m_PrefabInstance: {fileID: 935754678}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &823094335
 GameObject:
   m_ObjectHideFlags: 0
@@ -811,8 +816,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1082394875}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.8566437, y: 5.38, z: -11.3}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 6.79, y: 5.38, z: -11.3}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 8
@@ -1252,7 +1257,7 @@ CharacterController:
   m_Height: 1.8
   m_Radius: 0.22
   m_SlopeLimit: 45
-  m_StepOffset: 0.3
+  m_StepOffset: 0
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0.97, z: 0}
@@ -1296,6 +1301,7 @@ MonoBehaviour:
   groundMask:
     serializedVersion: 2
     m_Bits: 64
+  animator: {fileID: 807893658}
   isGrounded: 0
 --- !u!114 &2014334121
 MonoBehaviour:
@@ -1312,5 +1318,5 @@ MonoBehaviour:
   pushLayers:
     serializedVersion: 2
     m_Bits: 1
-  canPush: 0
+  canPush: 1
   strength: 1.1
