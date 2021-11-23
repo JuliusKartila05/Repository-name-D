@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Cinemachine;
+using Photon.Pun;
 
 public class MouseLook : MonoBehaviour
 {
@@ -25,6 +26,8 @@ public class MouseLook : MonoBehaviour
 
     Transform playerBody;
 
+    PhotonView view;
+
 
 
 
@@ -34,16 +37,24 @@ public class MouseLook : MonoBehaviour
         playerBody = gameObject.transform.parent;
         Cursor.lockState = mode;
         virtualCamera = GetComponent<CinemachineVirtualCamera>();
+        view = playerBody.GetComponent<PhotonView>();
+        if (!view.IsMine) 
+        {
+            virtualCamera.enabled = false;        
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (view.IsMine)
+        { 
         mouseX = Input.GetAxis("Mouse X") * mouseSensitivity * Time.deltaTime;
         mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity * Time.deltaTime;
         xRotation -= mouseY;
-        xRotation = Mathf.Clamp(xRotation,minXAngle,maxXAngle);
-        transform.localRotation = Quaternion.Euler(xRotation,0,0); 
+        xRotation = Mathf.Clamp(xRotation, minXAngle, maxXAngle);
+        transform.localRotation = Quaternion.Euler(xRotation, 0, 0);
         playerBody.Rotate(Vector3.up * mouseX);
+        }
     }
 }
