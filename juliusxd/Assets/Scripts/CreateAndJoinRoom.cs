@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using Photon.Pun;
+using Photon.Realtime;
 
 public class CreateAndJoinRoom : MonoBehaviourPunCallbacks
 
@@ -13,7 +14,12 @@ public class CreateAndJoinRoom : MonoBehaviourPunCallbacks
 
     public void CreateRoom()
     {
-        PhotonNetwork.CreateRoom(createInput.text);
+        RoomOptions roomOptions = new RoomOptions();
+        ExitGames.Client.Photon.Hashtable roomCustomProps = new ExitGames.Client.Photon.Hashtable();
+        roomCustomProps.Add("BlueScore", 0);
+        roomCustomProps.Add("RedScore", 0);
+        roomOptions.CustomRoomProperties = roomCustomProps;
+        PhotonNetwork.CreateRoom(createInput.text, roomOptions);
     }
 
     public void JoinRoom()
